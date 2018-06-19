@@ -15,11 +15,13 @@ class PreviewList extends Component {
     if (loading) {
       return <p>Loading...</p>
     }
-    return articleList
-      ? (articleList.map(item => (
-        <Preview {...item} key={item.id}/>
-      )))
-      : null
+    return (
+      <div>
+        {articleList.map(item => (
+          <Preview {...item} key={item.id}/>
+        ))}
+      </div>
+    )
   }
 }
 

@@ -32,7 +32,7 @@ function previewList(state = initialState, action) {
         ...state,
         loading: false,
         error: false,
-        articleList: action.payload.articleList
+        articleList: action.payload
       }
     }
 

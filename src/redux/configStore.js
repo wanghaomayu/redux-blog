@@ -4,10 +4,17 @@ import {routerReducer} from 'react-router-redux';
 
 import ThunkMiddleWare from 'redux-thunk';
 import rootReducer from './reducers';
+// 引入请求middleware的工厂方法
+import createFetchMiddleware from 'redux-composable-fetch';
+
+// 创建一个请求middleware的实例
+const FetchMiddleware = createFetchMiddleware();
 
 // 为了得到一个 能够解析包括异步请求的action 的createStore
 const finalCreateStore = compose(
-  applyMiddleware(ThunkMiddleWare)
+  applyMiddleware(ThunkMiddleWare,
+    // 将请求middleware注入store增强器中
+    FetchMiddleware)
 )(createStore);
 
 
