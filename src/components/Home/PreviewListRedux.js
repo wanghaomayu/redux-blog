@@ -4,10 +4,12 @@ const initialState = {
   articleList: []
 };
 
+// 底下的敞亮定义是：constants，意思就是常量，个人认为没啥用，浪费时间
 const LOAD_ARTICLES = "LOAD_ARTICLES";
 const LOAD_ARTICLES_SUCCESS = "LOAD_ARTICLES_SUCCESS";
 const LOAD_ARTICLES_ERROR = "LOAD_ARTICLES_ERROR";
 
+// 底下这玩意是actionCreators，就是创建action用的
 export function loadArticles() {
   return {
     types: [LOAD_ARTICLES, LOAD_ARTICLES_SUCCESS, LOAD_ARTICLES_ERROR],
@@ -40,6 +42,10 @@ function previewList(state = initialState, action) {
         loading: false,
         error: true
       }
+    }
+
+    default: {
+      return state
     }
   }
 }
