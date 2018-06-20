@@ -1,6 +1,8 @@
 // 完成store的配置
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
-import {routerReducer} from 'react-router-redux';
+import {routerReducer, routerMiddleware} from 'react-router-redux';
+import {hashHistory} from 'react-router';
+import DevTools from './DevTools';
 
 import ThunkMiddleWare from 'redux-thunk';
 import rootReducer from './reducers';
@@ -12,9 +14,14 @@ const FetchMiddleware = createFetchMiddleware();
 
 // 为了得到一个 能够解析包括异步请求的action 的createStore
 const finalCreateStore = compose(
-  applyMiddleware(ThunkMiddleWare,
+  applyMiddleware(
+    ThunkMiddleWare,
     // 将请求middleware注入store增强器中
-    FetchMiddleware)
+    FetchMiddleware,
+    //  为了让router的状态同步到store,这样组件中就可以使用store.dispatch(push('/))方法啦
+    routerMiddleware(hashHistory),
+  ),
+  DevTools.instrument() // 用createDevTools()创建的DevTools组件有个特殊的静态方法instrument(),它返回一个store的增强器,在开发中你需要在compose中使用
 )(createStore);
 
 

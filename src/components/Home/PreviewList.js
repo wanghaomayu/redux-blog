@@ -3,12 +3,15 @@ import Preview from './Preview'
 
 class PreviewList extends Component {
   componentDidMount() {
-    this.props.listActions();
-    // console.log(this.props.loading);
+    this.props.loadArticles();
   }
 
+  // componentWillUpdate(){
+  //   console.log(this.props.articleList.loading);
+  // }
+
   render() {
-    const {loading, error, articleList} = this.props;
+    const {loading, error, articleList} = this.props.articleList;
     if (error) {
       return <p>Error!</p>
     }
@@ -17,9 +20,9 @@ class PreviewList extends Component {
     }
     return (
       <div>
-        {articleList.map(item => (
-          <Preview {...item} key={item.id}/>
-        ))}
+        {articleList ? articleList.map(item => (
+          <Preview {...item} key={item.id} push = {this.props.push}/>
+        )) : null}
       </div>
     )
   }
