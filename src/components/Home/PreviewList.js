@@ -21,7 +21,7 @@ class PreviewList extends Component {
     return (
       <div>
         {articleList ? articleList.map(item => (
-          <Preview {...item} key={item.id} push = {this.props.push}/>
+          <Preview {...item} key={item.id} push = {this.props.push} id={item.id}/>
         )) : null}
       </div>
     )

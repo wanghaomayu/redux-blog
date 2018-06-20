@@ -9,7 +9,7 @@ const routes =(history) => (
   <Router history={history}>
     <Route path="/" component={Frame}>
       <IndexRoute component={Home}/>
-      <Route path='/detail/:detailId' component={Detail}/>
+      <Route path='/detail/:id' component={Detail}/>
     </Route>
   </Router>
 );
