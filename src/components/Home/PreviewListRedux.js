@@ -1,3 +1,5 @@
+// *该文件包括：constants+actionCreator+reducer，是某一功能模块的数据核心(因为有reducer和actionCreator)，个人认为写在这也算合理因为views
+// 目录下的容器组件只负责汇总reducer和action的，毕竟组件多了的话reducer和actionCreator也会变多，况且Home是Preview-XXX的父组件
 const initialState = {
   loading: true,
   error: false,

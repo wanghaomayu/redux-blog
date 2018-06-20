@@ -22,7 +22,8 @@ class Home extends Component {
 export default connect(
   (state) => {
     return {
-      articleList: state.home.listReducers  //  把store整棵树的一个子树赋值给articleList，以供其传给UI组件使用
+      articleList: state.home.listReducers  //  把store整棵树的一个子树赋值给articleList，以供其传给UI组件使用，
+                                            // *这里的listreducers虽不是直观数据，但是这个listReducers()函数 返回的是一个包含数据的对象
     }
   },
   (dispatch) => {

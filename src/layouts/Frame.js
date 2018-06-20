@@ -17,3 +17,4 @@ class Frame extends Component {
 }
 
 export default Frame;
+// *上面的this.props.children实际上是react-router的路由，结合路由组件的设计(回想一下，嵌套路由的关系)
